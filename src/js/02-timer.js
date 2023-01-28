@@ -1,6 +1,8 @@
+// Описаний в документації
 import flatpickr from "flatpickr";
+// Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
-import Notiflix from 'notiflix';
+import '../css/common.css';
 
 const text = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
@@ -35,7 +37,7 @@ function convertMs(ms) {
     const minute = second * 60;
     const hour = minute * 60;
     const day = hour * 24;
-
+  
     // Remaining days
     const days = Math.floor(ms / day);
     // Remaining hours
@@ -44,10 +46,10 @@ function convertMs(ms) {
     const minutes = Math.floor(((ms % day) % hour) / minute);
     // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-
+  
     return { days, hours, minutes, seconds };
-}
-
+  }
+  
 function addLeadingZero(value) {
     return value.toString().padStart(2, '0');
 };
@@ -70,5 +72,5 @@ startBtn.addEventListener('click', () => {
             timerHTML.style.color = 'black';
             clearInterval(timer);
         }
-    }, 500);
+    }, 1000);
 });
